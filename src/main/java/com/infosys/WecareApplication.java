@@ -1,4 +1,4 @@
-package com.infosys.wecare;
+package com.infosys;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
