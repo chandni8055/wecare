@@ -3,7 +3,6 @@ package com.infosys.dto;
 public class LoginDTO {
     private String id;
     private String password;
-
     public LoginDTO() {
     }
 

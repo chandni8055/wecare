@@ -17,8 +17,9 @@ public class CoachDTO {
     private LocalDate dateOfBirth;
     private char gender;
     @NotNull(message = "{coach.mobileNumber.notpresent}")
-    @Size(min = 10, max = 10, message = "{coach.mobileNumber.invalid}")
-    private long mobileNumber;
+//    @Min(value = 10,  message = "{coach.mobileNumber.invalid}")
+//    @Max(value = 10,  message = "{coach.mobileNumber.invalid}")
+    private Long mobileNumber;
 
     @NotNull(message = "{coach.speciality.notpresent}")
     @Size(min = 3, max = 50, message = "{coach.speciality.invalid}")
