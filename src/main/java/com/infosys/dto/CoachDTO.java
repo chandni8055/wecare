@@ -1,6 +1,7 @@
 package com.infosys.dto;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -17,8 +18,7 @@ public class CoachDTO {
     private LocalDate dateOfBirth;
     private char gender;
     @NotNull(message = "{coach.mobileNumber.notpresent}")
-//    @Min(value = 10,  message = "{coach.mobileNumber.invalid}")
-//    @Max(value = 10,  message = "{coach.mobileNumber.invalid}")
+//    @Pattern(regexp = "[0-9]{10}", message = "{coach.mobileNumber.invalid}")
     private Long mobileNumber;
 
     @NotNull(message = "{coach.speciality.notpresent}")

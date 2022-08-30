@@ -1,19 +1,28 @@
 package com.infosys.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
-@Entity
+@Entity(name = "bookingtable")
 @Table(name = "bookingtable")
 public class BookingEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int	bookingId;
     private String	userId;
     private String	coachId;
-    private String	slot;
+    private char slot;
     private LocalDate appointmentDate;
+
+    public BookingEntity() {
+    }
+
+    public BookingEntity(String userId, String coachId, char slot, LocalDate appointmentDate) {
+        this.userId = userId;
+        this.coachId = coachId;
+        this.slot = slot;
+        this.appointmentDate = appointmentDate;
+    }
 
     public int getBookingId() {
         return bookingId;
@@ -39,11 +48,11 @@ public class BookingEntity {
         this.coachId = coachId;
     }
 
-    public String getSlot() {
+    public char getSlot() {
         return slot;
     }
 
-    public void setSlot(String slot) {
+    public void setSlot(char slot) {
         this.slot = slot;
     }
 

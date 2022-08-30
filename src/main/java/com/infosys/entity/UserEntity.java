@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
-@Entity
+@Entity(name = "usertable")
 @Table(name = "usertable")
 public class UserEntity {
 

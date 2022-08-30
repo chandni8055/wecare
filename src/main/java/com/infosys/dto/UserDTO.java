@@ -1,12 +1,10 @@
 package com.infosys.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class UserDTO {
-    private String coachId;
+    private String userId;
 
     @NotNull(message = "{user.password.notpresent}")
     @Size(min = 5, max = 10, message = "{user.password.invalid}")
@@ -19,14 +17,15 @@ public class UserDTO {
     private char gender;
 
     @NotNull(message = "{user.mobileNumber.notpresent}")
-    @Size(min = 10, max = 10, message = "{user.mobileNumber.invalid}")
+//    @Pattern(regexp = "[0-9]{10}", message = "{user.mobileNumber.invalid}")
     private long mobileNumber;
 
     @Email(message = "{user.email.invalid}")
     private String email;
 
     @NotNull(message = "{user.pincode.notpresent}")
-    @Size(min = 6, max = 6, message = "{user.pincode.invalid}")
+    @Min(value = 100000, message = "{user.pincode.invalid}")
+    @Max(value = 999999, message = "{user.pincode.invalid}")
     private int pincode;
 
     @NotNull(message = "{user.city.notpresent}")
@@ -44,9 +43,9 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String coachId, String password, String name, LocalDate dateOfBirth, char gender, long mobileNumber,
+    public UserDTO(String userId, String password, String name, LocalDate dateOfBirth, char gender, long mobileNumber,
                    String email, int pincode, String city, String state, String country) {
-        this.coachId = coachId;
+        this.userId = userId;
         this.password = password;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -59,12 +58,12 @@ public class UserDTO {
         this.country = country;
     }
 
-    public String getCoachId() {
-        return coachId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setCoachId(String coachId) {
-        this.coachId = coachId;
+    public void setUserId(String coachId) {
+        this.userId = coachId;
     }
 
     public String getPassword() {

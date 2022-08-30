@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "coachtable")
 @Table(name = "coachtable")
 public class CoachEntity {
 
