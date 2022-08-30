@@ -4,6 +4,7 @@ import com.infosys.dto.BookingDTO;
 import com.infosys.dto.CoachDTO;
 import com.infosys.dto.LoginDTO;
 import com.infosys.exception.WecareException;
+import com.infosys.service.BookService;
 import com.infosys.service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,9 @@ public class CoachRestController {
 
     @Autowired
     private CoachService coachService;
+
+    @Autowired
+    private BookService bookService;
 
     @PostMapping
     public ResponseEntity<String> createCoach(@Valid @RequestBody CoachDTO coachDTO) {
@@ -51,7 +55,6 @@ public class CoachRestController {
 
     @GetMapping("/booking/{coachId}")
     public List<BookingDTO> showMySchedule(@PathVariable String coachId) {
-        //TODO: fetch the bookingdto from service and return the list
-        return Collections.emptyList();
+        return bookService.findBookingByCoachId(coachId);
     }
 }

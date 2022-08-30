@@ -10,9 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface BookRepository extends CrudRepository<BookingEntity, String> {
-    Optional<BookingEntity> findByUserId(String UserId);
-
+public interface BookRepository extends CrudRepository<BookingEntity, Integer> {
     @Query(value = "select b from bookingtable b where b.userId = :userId and b.appointmentDate = :today")
     List<BookingEntity> findBookingByUserId(String userId, LocalDate today);
 

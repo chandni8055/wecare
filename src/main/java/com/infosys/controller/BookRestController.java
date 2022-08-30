@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/booking")
@@ -26,8 +25,14 @@ public class BookRestController {
     }
 
     @PutMapping("/{bookingId}")
-    public ResponseEntity<Boolean> rescheduleAppointment(@PathVariable Integer bookingId, @Valid @RequestBody BookingDTO bookingDTO) {
+    public ResponseEntity<Boolean> rescheduleAppointment(@PathVariable Integer bookingId, @Valid @RequestBody BookingDTO bookingDTO) throws WecareException {
         Boolean isRescheduled = bookService.rescheduleAppointment(bookingId, bookingDTO.getAppointmentDate(), bookingDTO.getSlot());
         return new ResponseEntity<>(isRescheduled, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{bookingId}")
+    public ResponseEntity<?> cancelAppointment(@PathVariable Integer bookingId) throws WecareException {
+        bookService.cancelAppointment(bookingId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

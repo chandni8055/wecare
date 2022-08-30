@@ -5,6 +5,7 @@ import com.infosys.dto.CoachDTO;
 import com.infosys.dto.LoginDTO;
 import com.infosys.dto.UserDTO;
 import com.infosys.exception.WecareException;
+import com.infosys.service.BookService;
 import com.infosys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class UserRestController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BookService bookService;
 
     @PostMapping
     public ResponseEntity<String> createUser(@Valid @RequestBody UserDTO userDTO) {
@@ -42,8 +46,7 @@ public class UserRestController {
 
     @GetMapping("/booking/{userId}")
     public List<BookingDTO> showMyAppointments(@PathVariable String userId) {
-        //TODO: fetch the bookingdto from service and return the list
-        return Collections.emptyList();
+        return bookService.findBookingByUserId(userId);
     }
 
 }

@@ -16,8 +16,7 @@ public class BookingDTO {
     public BookingDTO() {
     }
 
-    public BookingDTO(int bookingId, String userId, String coachId, LocalDate appointmentDate, char slot) {
-        this.bookingId = bookingId;
+    public BookingDTO(String userId, String coachId, LocalDate appointmentDate, char slot) {
         this.userId = userId;
         this.coachId = coachId;
         this.appointmentDate = appointmentDate;
